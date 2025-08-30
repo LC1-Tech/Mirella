@@ -1,0 +1,322 @@
+/* Importação de fontes Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Estilos gerais do corpo da página */
+body {
+    font-family: 'Playfair Display', serif; /* Fonte elegante para o texto principal */
+    background: #fdf2f5; /* Cor de fundo suave */
+    color: #444; /* Cor de texto mais escura e suave */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo ao topo para rolagem */
+    min-height: 100vh; /* Garante que o body ocupe a altura mínima da tela */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    position: relative; /* Para posicionar os corações flutuantes */
+}
+
+/* Container principal para centralizar e estilizar o conteúdo */
+.container {
+    background-color: rgba(255, 255, 255, 0.98); /* Fundo quase opaco para destaque */
+    padding: 50px 30px; /* Padding generoso */
+    border-radius: 25px; /* Bordas mais arredondadas */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Sombra mais profunda */
+    text-align: center;
+    max-width: 900px; /* Largura máxima ajustada */
+    width: 95%; /* Responsividade */
+    box-sizing: border-box;
+    margin: 30px 0; /* Margem para cima e para baixo para rolagem */
+    position: relative;
+    z-index: 10; /* Garante que o conteúdo fique acima dos corações */
+    border: 1px solid #ffebee; /* Borda suave para o container */
+}
+
+/* Animação de corações flutuantes no fundo */
+.heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Abaixo do conteúdo principal */
+    pointer-events: none; /* Não interfere com cliques */
+}
+
+.heart {
+    position: absolute;
+    background-color: #ff8a80; /* Cor vermelha do coração */
+    width: 20px;
+    height: 20px;
+    transform: rotate(-45deg);
+    animation: floatHeart 15s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff8a80;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(100vh) rotate(-45deg) scale(0.5); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(1.5); opacity: 0; }
+}
+
+/* Posições aleatórias para os corações */
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; transform: scale(0.7); }
+.heart:nth-child(2) { left: 20%; animation-delay: 2s; transform: scale(0.9); }
+.heart:nth-child(3) { left: 30%; animation-delay: 4s; transform: scale(0.6); }
+.heart:nth-child(4) { left: 40%; animation-delay: 6s; transform: scale(1.1); }
+.heart:nth-child(5) { left: 50%; animation-delay: 8s; transform: scale(0.8); }
+.heart:nth-child(6) { left: 60%; animation-delay: 10s; transform: scale(0.5); }
+.heart:nth-child(7) { left: 70%; animation-delay: 12s; transform: scale(1.2); }
+.heart:nth-child(8) { left: 80%; animation-delay: 14s; transform: scale(0.7); }
+.heart:nth-child(9) { left: 90%; animation-delay: 16s; transform: scale(1.0); }
+.heart:nth-child(10) { left: 5%; animation-delay: 18s; transform: scale(0.6); }
+
+
+/* Estilos do cabeçalho */
+header {
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.header-icon {
+    font-size: 4em; /* Ícone de coração maior */
+    color: #d81b60; /* Cor vibrante */
+    margin-bottom: 15px;
+    animation: heartbeat 1.5s infinite alternate; /* Animação de batida */
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+header h1 {
+    font-family: 'Great Vibes', cursive; /* Fonte cursiva para o título */
+    color: #c2185b; /* Cor mais escura para o título */
+    font-size: 4.5em; /* Título bem grande */
+    margin-bottom: 10px;
+    font-weight: 700; /* Negrito */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* Sombra no texto */
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #880e4f; /* Cor roxa para o subtítulo */
+    font-weight: 400;
+    margin-top: 0;
+    font-style: italic; /* Subtítulo em itálico */
+}
+
+.separator {
+    width: 80px;
+    height: 3px;
+    background-color: #ff8a80; /* Cor do separador */
+    margin: 20px auto 0 auto;
+    border-radius: 5px;
+}
+
+/* Estilos da seção da mensagem (cartão de mensagem) */
+.message-card {
+    background-color: #fff9f9; /* Fundo suave para o cartão da mensagem */
+    border: 1px solid #ffccbc; /* Borda suave */
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: inset 0 0 10px rgba(255,100,100,0.05); /* Sombra interna suave */
+    text-align: left; /* Texto alinhado à esquerda dentro do cartão */
+}
+
+.intro-message {
+    font-family: 'Great Vibes', cursive; /* Fonte cursiva para a introdução */
+    font-size: 1.8em;
+    color: #e91e63;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.message p {
+    font-size: 1.15em; /* Tamanho da fonte mais agradável para leitura */
+    line-height: 1.8; /* Espaçamento entre linhas para melhor leitura */
+    margin: 0 auto 25px auto; /* Mais espaçamento entre parágrafos */
+    text-align: justify; /* Texto justificado para um visual organizado */
+    max-width: 100%;
+    font-weight: 600; /* Negrito médio para o texto principal */
+    color: #555; /* Cor de texto suave */
+}
+
+.separator-small {
+    width: 50px;
+    height: 2px;
+    background-color: #ffcdd2;
+    margin: 30px auto 20px auto;
+    border-radius: 5px;
+}
+
+.final-thought {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6em;
+    color: #e91e63;
+    text-align: center;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+
+/* Estilos da citação de amor */
+.love-quote {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #fff3e0; /* Fundo mais quente para a citação */
+    border-left: 8px solid #ffab40; /* Borda lateral de destaque mais forte */
+    font-style: italic;
+    color: #795548;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Sombra mais destacada */
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.love-quote .quote-icon {
+    position: absolute;
+    font-size: 2.5em;
+    color: rgba(255, 171, 64, 0.4);
+}
+
+.love-quote .fa-quote-left {
+    top: 10px;
+    left: 10px;
+}
+
+.love-quote .fa-quote-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+.love-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    color: #5d4037;
+}
+
+.love-quote .author {
+    font-size: 1.1em;
+    font-weight: 400;
+    text-align: center;
+    color: #a1887f;
+    margin-top: 10px;
+}
+
+/* Seção de Call to Action (Chamada para Ação) */
+.call-to-action {
+    background-color: #ffebee;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.call-to-action h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #d81b60;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
+
+.call-to-action p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+.love-button {
+    background-color: #e91e63;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-weight: bold;
+}
+
+.love-button:hover {
+    background-color: #d81b60;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.love-button i {
+    margin-right: 10px;
+}
+
+
+/* Estilos do rodapé */
+footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px dashed #ffcdd2; /* Linha tracejada no rodapé */
+    color: #888;
+}
+
+.footer-icons {
+    margin-bottom: 15px;
+}
+
+.footer-icons i {
+    color: #e91e63;
+    font-size: 1.5em;
+    margin: 0 5px;
+}
+
+footer p {
+    font-size: 1em;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.location-date {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.copyright {
+    font-size: 0.8em;
+    color: #c0c0c0;
+    margin-top: 15px;
+}
